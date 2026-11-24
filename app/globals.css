@@ -1,26 +1,45 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-cream: #fff9f5;
+  --color-pink: #ffb8c9;
+  --color-pink-deep: #f48fab;
+  --color-mint: #bfebd7;
+  --color-mint-deep: #3fa57b;
+  --color-peach: #ffd6b0;
+  --color-lavender: #d9d2ff;
+  --color-lavender-deep: #7d6fe0;
+  --color-coral: #ff8a80;
+  --color-coral-soft: #ffe3df;
+  --color-ink: #3b2f3a;
+  --color-muted: #8c7f8a;
+  --color-line: #f1e6e1;
+  --font-sans: var(--font-nunito);
+  --shadow-soft: 0 12px 40px -14px rgba(140, 90, 110, 0.22);
+  --shadow-softer: 0 4px 16px -6px rgba(140, 90, 110, 0.16);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-image:
+    radial-gradient(circle at 12% 8%, #ffe9f0 0, transparent 38%),
+    radial-gradient(circle at 92% 88%, #eef8f2 0, transparent 40%),
+    radial-gradient(circle at 70% 10%, #f1eeff 0, transparent 30%);
+}
+
+::selection {
+  background: var(--color-lavender);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.no-scrollbar::-webkit-scrollbar-thumb {
+  background: #eadcd6;
+  border-radius: 99px;
 }
