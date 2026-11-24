@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Trick ANNA: Break the bot
 
-## Getting Started
+![Trick ANNA](main.png)
 
-First, run the development server:
+## Quick setup
+
+Needs Node.js 20 or newer and a Nebius Token Factory key.
+
+1. **Get the code**
+
+   ```bash
+   git clone https://github.com/Andreaswt/FreshaHackathon.git
+   cd FreshaHackathon
+   ```
+
+2. **Install**
+
+   ```bash
+   npm install
+   ```
+
+3. **Add your Nebius key.** Create a file called `.env` in the repository folder:
+
+   ```bash
+   NEBIUS_API_KEY=your-nebius-key
+   ```
+
+   `.env` is never committed. Without the key the intro still plays, but ANNA and Penny can't reply.
+
+4. **Run**
+
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) for the game and
+   [http://localhost:3000/pitch](http://localhost:3000/pitch) for the one-slide pitch.
+
+5. **Check**
+
+   ```bash
+   npx tsc --noEmit
+   npm run lint
+   ```
+
+Switches (in `.env`): `DIFFICULTY=soft` makes ANNA easier to trick, and `DEMO_BACKDOORS=off` turns off
+the scripted demo bugs.
+
+## Overview
+
+ANNA's AI agents move money and send invoices. To trust them you need lots of realistic, labelled
+examples of them going wrong, and writing those by hand is slow.
+
+Trick ANNA turns finding those failures into a game. The player chats with a fake ANNA banking
+assistant and tries to make it slip up. Penny, a piggy-bank coach, watches every reply, explains
+what happened and gives hints. Every time the player breaks ANNA, the break is saved as a labelled
+test case that can be replayed.
+
+## Setup
+
+### Clone the repository
+
+```bash
+git clone https://github.com/Andreaswt/FreshaHackathon.git
+cd FreshaHackathon
+```
+
+### Install Node.js
+
+Install Node.js 20 or newer ([Node.js download](https://nodejs.org/)), then:
+
+```bash
+npm install
+```
+
+### Add the Nebius key
+
+Create a `.env` file:
+
+```bash
+NEBIUS_API_KEY=your-key-here
+```
+
+### Run
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/` is the game: welcome, a scripted intro (skippable), then the missions.
+- `/pitch` is a one-slide pitch. Press → or Enter to jump into the game.
